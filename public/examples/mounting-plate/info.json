@@ -1,0 +1,21 @@
+{
+  "id": "mounting-plate",
+  "tier": "simple",
+  "title": "Mounting plate",
+  "number": "MP-120",
+  "material": "Aluminium 6061-T6",
+  "bbox": [
+    120.0,
+    80.0,
+    10.0
+  ],
+  "volume_mm3": 80275.7,
+  "area_mm2": 22245.9,
+  "mass_g": 216.7,
+  "faces": 16,
+  "edges": 41,
+  "cylindrical_faces": 9,
+  "valid": true,
+  "step_bytes": 52817,
+  "glb_bytes": 78184
+}

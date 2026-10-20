@@ -1,0 +1,65 @@
+[
+  {
+    "id": "mounting-plate",
+    "tier": "simple",
+    "title": "Mounting plate",
+    "number": "MP-120",
+    "material": "Aluminium 6061-T6",
+    "bbox": [
+      120.0,
+      80.0,
+      10.0
+    ],
+    "volume_mm3": 80275.7,
+    "area_mm2": 22245.9,
+    "mass_g": 216.7,
+    "faces": 16,
+    "edges": 41,
+    "cylindrical_faces": 9,
+    "valid": true,
+    "step_bytes": 52817,
+    "glb_bytes": 78184
+  },
+  {
+    "id": "pillow-block",
+    "tier": "medium",
+    "title": "Pillow block, 6204 bearing",
+    "number": "PB-47",
+    "material": "Cast iron EN-GJL-250",
+    "bbox": [
+      150.0,
+      44.0,
+      98.0
+    ],
+    "volume_mm3": 266691.6,
+    "area_mm2": 39636.7,
+    "mass_g": 1920.2,
+    "faces": 34,
+    "edges": 91,
+    "cylindrical_faces": 14,
+    "valid": true,
+    "step_bytes": 148834,
+    "glb_bytes": 117460
+  },
+  {
+    "id": "gearbox-housing",
+    "tier": "complex",
+    "title": "Gearbox housing, two-stage",
+    "number": "GB-110",
+    "material": "Aluminium A356-T6",
+    "bbox": [
+      150.0,
+      120.0,
+      82.0
+    ],
+    "volume_mm3": 456179.2,
+    "area_mm2": 106506.3,
+    "mass_g": 1222.6,
+    "faces": 105,
+    "edges": 291,
+    "cylindrical_faces": 50,
+    "valid": true,
+    "step_bytes": 414812,
+    "glb_bytes": 490924
+  }
+]

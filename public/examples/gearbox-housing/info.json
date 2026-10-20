@@ -1,0 +1,21 @@
+{
+  "id": "gearbox-housing",
+  "tier": "complex",
+  "title": "Gearbox housing, two-stage",
+  "number": "GB-110",
+  "material": "Aluminium A356-T6",
+  "bbox": [
+    150.0,
+    120.0,
+    82.0
+  ],
+  "volume_mm3": 456179.2,
+  "area_mm2": 106506.3,
+  "mass_g": 1222.6,
+  "faces": 105,
+  "edges": 291,
+  "cylindrical_faces": 50,
+  "valid": true,
+  "step_bytes": 414812,
+  "glb_bytes": 490924
+}
