@@ -6,6 +6,8 @@ export const site = {
   supportEmail: "support@drawing2cad.com",
   maxUploadMB: 50,
   signupCoins: 20,
+  // The landing-page demo. Until it is recorded, a placeholder shows instead. Put the file in public/media.
+  demoVideo: null as { src: string; poster: string } | null,
 } as const;
 
 export const acceptedFiles = {

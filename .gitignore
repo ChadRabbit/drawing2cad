@@ -49,3 +49,5 @@ __pycache__/
 
 # design inspector output
 /.taste-skill/inspect
+
+!.env.example

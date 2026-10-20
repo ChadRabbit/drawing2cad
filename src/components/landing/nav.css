@@ -1,0 +1,121 @@
+/* One bar for the whole site: over the hero on the landing page, sticky inside the app. */
+.nav {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 40px;
+  color: #ffffff;
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--step-body);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.nav__brand {
+  justify-self: start;
+}
+
+.nav__links {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: var(--step-small);
+  white-space: nowrap;
+  transition: opacity 240ms var(--ease-ui);
+}
+
+.nav__links[data-ready="false"] {
+  opacity: 0;
+}
+
+/* the signed-in name, written on from left to right */
+.nav__hello {
+  grid-column: 2;
+  font-size: 34px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nav__hello span {
+    display: inline-block;
+    padding-right: 0.15em;
+    animation: write-on 1100ms cubic-bezier(0.6, 0, 0.3, 1) both;
+  }
+}
+
+@keyframes write-on {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.nav--app {
+  position: sticky;
+  top: 0;
+  background: var(--soot);
+  padding-block: 22px;
+}
+
+.nav__links .link[aria-current="page"] {
+  text-decoration-color: currentColor;
+}
+
+.nav__out {
+  display: contents;
+}
+
+.nav__out button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--grey-on-dark);
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav__out button:hover {
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 860px) {
+  .nav {
+    grid-template-columns: auto 1fr auto;
+    padding: 20px;
+    gap: 12px;
+  }
+  .nav__hello {
+    justify-self: center;
+  }
+  .nav__links {
+    gap: 16px;
+  }
+  .nav--in .nav__brand span {
+    display: none;
+  }
+  .nav__hello {
+    font-size: 28px;
+  }
+  .nav__hide-s {
+    display: none;
+  }
+  .nav--app {
+    padding-block: 16px;
+  }
+}

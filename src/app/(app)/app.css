@@ -1,0 +1,375 @@
+/* The signed-in app. Same soot ground and nav as the landing page; the product's own conventions (thin
+   control borders, small radii, 14–15px interface text). Drawings and models stay on white paper. */
+
+.app {
+  min-height: 100svh;
+  --surface: var(--soot-2);
+  --panel: var(--soot-3);
+  --field: var(--soot);
+  --line: #2e2e2e;
+  --line-strong: #4a4a4a;
+  --text-2: var(--grey-on-dark);
+  font-size: 15px;
+}
+
+.app .btn-ink {
+  --btn-bg: #ffffff;
+  --btn-fg: var(--soot);
+  --btn-bg-hover: #e9e9e9;
+}
+
+.app .btn-tile {
+  --btn-bg: var(--soot-3);
+  --btn-bg-hover: #333333;
+}
+
+.muted {
+  color: var(--text-2);
+}
+
+/* ---------------------------------------------------------------- page */
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 44px 24px 120px;
+}
+
+.page__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 24px;
+  margin-bottom: 32px;
+}
+
+.page__title {
+  font-size: clamp(2rem, 1.4rem + 2vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+}
+
+.page__sub {
+  margin-top: 8px;
+  color: var(--text-2);
+  max-width: 60ch;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.card__pad {
+  padding: 22px;
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: 12px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.split--viewer {
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+}
+
+.stack {
+  display: grid;
+  gap: 16px;
+}
+
+/* ---------------------------------------------------------------- form */
+.field {
+  display: grid;
+  gap: 7px;
+}
+
+.field > label,
+.field__label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.field__hint {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--field);
+  font: inherit;
+  font-size: 15px;
+  color: var(--fg);
+  transition: border-color 160ms var(--ease-ui), box-shadow 160ms var(--ease-ui);
+}
+
+.textarea {
+  min-height: 92px;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--fg);
+  box-shadow: 0 0 0 3px rgba(218, 250, 156, 0.18);
+}
+
+.seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 3px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.seg button {
+  position: relative;
+  height: 34px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: color 160ms var(--ease-ui);
+}
+
+.seg button[aria-pressed="true"] {
+  color: var(--fg);
+}
+
+.seg__pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--soot);
+  border: 1px solid var(--line);
+}
+
+.seg__label {
+  position: relative;
+}
+
+.drop {
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  min-height: 260px;
+  padding: 28px;
+  text-align: center;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: 14px;
+  background: var(--panel);
+  cursor: pointer;
+  transition: border-color 160ms var(--ease-ui), background-color 160ms var(--ease-ui);
+}
+
+.drop:hover,
+.drop[data-over="true"] {
+  border-color: var(--fg);
+  background: #2c2c2c;
+}
+
+.drop:focus-within {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.drop input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--text-2);
+}
+
+.chip[data-tone="lime"] {
+  background: var(--lime);
+  border-color: transparent;
+  color: var(--soot);
+}
+
+.chip[data-tone="ink"] {
+  background: #ffffff;
+  border-color: transparent;
+  color: var(--soot);
+}
+
+.chip[data-tone="bad"] {
+  background: #3a1512;
+  border-color: transparent;
+  color: #ffb4a9;
+}
+
+.alert {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #3a1512;
+  color: #ffd2cb;
+  font-size: 14px;
+}
+
+.alert[data-tone="info"] {
+  background: var(--panel);
+  color: var(--fg);
+}
+
+.bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.bar > span {
+  display: block;
+  height: 100%;
+  background: var(--fg);
+  border-radius: inherit;
+  transform-origin: left;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 16px;
+  font-size: 14px;
+}
+
+.kv dt {
+  color: var(--text-2);
+}
+
+.kv dd {
+  margin: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.table th,
+.table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table th {
+  font-weight: 500;
+  color: var(--text-2);
+}
+
+.table .num {
+  text-align: right;
+}
+
+.empty {
+  display: grid;
+  place-items: center;
+  gap: 12px;
+  padding: 72px 24px;
+  text-align: center;
+}
+
+.skeleton {
+  border-radius: 12px;
+  background: linear-gradient(90deg, #1a1a1a, #242424, #1a1a1a); /* taste-skill-ignore: loading shimmer */
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 28px 16px 96px;
+  }
+  .split,
+  .split--viewer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pulse {
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.pack-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 22px;
+  border-top: 1px solid var(--line);
+}

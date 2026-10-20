@@ -239,7 +239,7 @@ function AnnotationShape({ a, size, highlighted }: { a: Annotation; size: number
       </g>
     );
   }
-  // note
+  if (a.type !== "note") return null;
   const end: Pt = [a.at[0] + a.to[0], a.at[1] - a.to[1]];
   const right = a.to[0] >= 0;
   const textW = a.text.length * size * 0.6;

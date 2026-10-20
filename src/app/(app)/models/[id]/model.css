@@ -1,0 +1,233 @@
+.model__name button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: left;
+  cursor: text;
+  border-radius: 6px;
+  transition: background-color 160ms var(--ease-ui);
+}
+
+.model__name button:hover {
+  background: var(--panel);
+}
+
+.model__name-input {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  font-weight: 300;
+  min-width: min(560px, 80vw);
+}
+
+.pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pulse {
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* drawing preview while waiting */
+.drawing-preview {
+  overflow: hidden;
+}
+
+.drawing-preview__body {
+  position: relative;
+  aspect-ratio: 1.414 / 1;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.drawing-preview__body img,
+.drawing-preview__body iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: contain;
+}
+
+.drawing-preview__foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.scanline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.scanline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: var(--lime-strong);
+  box-shadow: 0 0 0 1px rgba(15, 15, 15, 0.12);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scanline {
+    animation: scan 3.2s var(--ease-in-out) infinite alternate;
+  }
+}
+
+@keyframes scan {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(100% - 2px));
+  }
+}
+
+.bar--indeterminate span {
+  width: 35%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bar--indeterminate span {
+    animation: indeterminate 1.6s var(--ease-in-out) infinite;
+  }
+}
+
+@keyframes indeterminate {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(290%);
+  }
+}
+
+.stages {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2px;
+}
+
+.stages li {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  color: var(--text-2);
+  transition: color 240ms var(--ease-ui);
+}
+
+.stages li[data-state="now"] {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.stages li[data-state="done"] {
+  color: var(--fg);
+}
+
+.stages__dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  display: grid;
+  place-items: center;
+  transition: background-color 240ms var(--ease-ui), border-color 240ms var(--ease-ui);
+}
+
+.stages li[data-state="done"] .stages__dot {
+  background: var(--fg);
+  border-color: var(--fg);
+  color: var(--soot);
+}
+
+.stages li[data-state="now"] .stages__dot {
+  border-color: var(--fg);
+}
+
+.stages li[data-state="now"] .stages__dot::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--fg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stages li[data-state="now"] .stages__dot::after {
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+}
+
+/* finished model */
+.viewer-card {
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.viewer-card__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.viewer-card__stage {
+  position: relative;
+  height: min(68vh, 640px);
+  min-height: 380px;
+  background: #ffffff;
+}
+
+.viewer-card__drawing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #ffffff;
+}
+
+.viewer-card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  min-height: 52px;
+  align-items: center;
+  padding: 10px 16px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.btn.is-disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.45;
+  pointer-events: none;
+}

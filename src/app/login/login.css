@@ -1,0 +1,55 @@
+.login {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+}
+
+.login__panel {
+  width: min(440px, 100%);
+  display: grid;
+  gap: 20px;
+}
+
+.login__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.login__title {
+  font-size: var(--step-head);
+  font-weight: 300;
+}
+
+.login__lede {
+  color: var(--fg-2);
+}
+
+.login__google {
+  margin-top: 12px;
+  width: 100%;
+}
+
+.login__error {
+  color: #ffb4a8;
+}
+
+.login__legal {
+  margin-top: 24px;
+  font-size: var(--step-small);
+  color: var(--fg-2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .login__panel > * {
+    animation: rise 700ms var(--ease-out) both;
+  }
+  .login__panel > *:nth-child(2) { animation-delay: 60ms; }
+  .login__panel > *:nth-child(3) { animation-delay: 120ms; }
+  .login__panel > *:nth-child(4) { animation-delay: 180ms; }
+  .login__panel > *:nth-child(5) { animation-delay: 240ms; }
+}

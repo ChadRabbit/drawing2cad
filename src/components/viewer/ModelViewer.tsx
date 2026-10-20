@@ -40,6 +40,7 @@ type Props = {
   touchGate?: boolean;
   initialView?: ViewName;
   className?: string;
+  style?: React.CSSProperties;
   label?: string;
   onReadout?: (r: Readout | null) => void;
   onLoad?: (stats: ModelStats) => void;
@@ -88,6 +89,7 @@ const ModelViewer = forwardRef<ModelViewerHandle, Props>(function ModelViewer(
     touchGate = false,
     initialView = "iso",
     className,
+    style,
     label = "3D model",
     onReadout,
     onLoad,
@@ -281,10 +283,15 @@ const ModelViewer = forwardRef<ModelViewerHandle, Props>(function ModelViewer(
     // ---- load --------------------------------------------------------------------------------
     const finish = () => {
       if (disposed) return;
+      // measure in the part's own (CAD, Z-up) coordinates, then centre it inside the turned pivot
+      pivot.rotation.x = 0;
+      pivot.updateMatrixWorld(true);
       const box = new THREE.Box3().setFromObject(model);
       const centre = box.getCenter(new THREE.Vector3());
       const size = box.getSize(new THREE.Vector3());
+      pivot.rotation.x = -Math.PI / 2;
       model.position.copy(centre).multiplyScalar(-1);
+      pivot.updateMatrixWorld(true);
       s.radius = Math.max(size.length() / 2, 1);
       camera.near = s.radius / 100;
       camera.far = s.radius * 100;
@@ -450,7 +457,8 @@ const ModelViewer = forwardRef<ModelViewerHandle, Props>(function ModelViewer(
           group.add(m);
         }
         for (const e of s.edges) {
-          const l = new THREE.LineSegments(e.geometry, new THREE.LineBasicMaterial({ color: 0x111111 }));
+          // the exporter only reads the colour; a basic material keeps it from warning about line materials
+          const l = new THREE.LineSegments(e.geometry, new THREE.MeshBasicMaterial({ color: 0x111111 }));
           l.name = "edges";
           group.add(l);
         }
@@ -462,7 +470,7 @@ const ModelViewer = forwardRef<ModelViewerHandle, Props>(function ModelViewer(
   );
 
   return (
-    <div className={className} style={{ position: "relative" }}>
+    <div className={className} style={{ position: "relative", ...style }}>
       <div
         ref={hostRef}
         role="img"

@@ -1,0 +1,98 @@
+.models {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.model-card {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  transition: border-color 180ms var(--ease-ui), transform 220ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .model-card:hover {
+    border-color: var(--line-strong);
+  }
+  .model-card:hover .model-card__thumb img {
+    transform: scale(1.03);
+  }
+}
+
+.model-card:active {
+  transform: scale(0.99);
+}
+
+.model-card__thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.model-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 500ms var(--ease-out);
+}
+
+.model-card__placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 6px;
+  background: var(--panel);
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.model-card__progress {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(128, 128, 128, 0.3);
+  overflow: hidden;
+}
+
+.model-card__progress span {
+  display: block;
+  height: 100%;
+  background: var(--fg);
+  transform-origin: left;
+  transition: transform 600ms var(--ease-out);
+}
+
+.model-card__meta {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px 16px;
+}
+
+.model-card__name {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.model-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+}

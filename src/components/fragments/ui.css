@@ -1,0 +1,321 @@
+/* The product's own interface, used both inside the app and as data-ui fragments on the landing page.
+   Inside [data-ui] the product's conventions apply: 1px control borders, small radii, 13–15px text. */
+
+[data-ui] {
+  min-width: 0;
+  --ui-bg: #ffffff;
+  --ui-panel: #f6f6f5;
+  --ui-line: #e3e3e1;
+  --ui-text: #141414;
+  --ui-text-2: #5f5f5f;
+  --ui-hover: #efefed;
+  --ui-accent: #dafa9c;
+  --ui-accent-ink: #0f0f0f;
+  --ui-ok: #2f7d32;
+  --ui-radius: 12px;
+  --ui-radius-s: 8px;
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  font-family: var(--font-text);
+  font-size: 14px;
+  line-height: 1.45;
+  border-radius: var(--ui-radius);
+  border: 1px solid var(--ui-line);
+  overflow: hidden;
+}
+
+[data-ui][data-theme="dark"] {
+  --ui-bg: #1b1b1b;
+  --ui-panel: #232323;
+  --ui-line: #2f2f2f;
+  --ui-text: #ececec;
+  --ui-text-2: #a3a3a3;
+  --ui-hover: #2a2a2a;
+  --ui-ok: #9bd37a;
+}
+
+[data-ui] .ui-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  min-height: 48px;
+  padding: 7px 14px;
+  border-bottom: 1px solid var(--ui-line);
+}
+
+[data-ui] .ui-bar > *,
+[data-ui] .ui-foot > * {
+  min-width: 0;
+}
+
+[data-ui] .ui-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 8px 14px;
+  border-top: 1px solid var(--ui-line);
+}
+
+[data-ui] .ui-title {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-ui] .ui-sub {
+  color: var(--ui-text-2);
+  font-size: 13px;
+}
+
+[data-ui] .ui-body {
+  padding: 14px;
+}
+
+[data-ui] .ui-seg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  background: var(--ui-panel);
+  border: 1px solid var(--ui-line);
+  border-radius: 999px;
+}
+
+[data-ui] .ui-seg button {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ui-text-2);
+  font-size: 13px;
+  font-weight: 500;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease-ui), color 160ms var(--ease-ui);
+}
+
+[data-ui] .ui-seg button[aria-pressed="true"] {
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  border-color: var(--ui-line);
+}
+
+[data-ui] .ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--ui-line);
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease-ui), transform 120ms var(--ease-out);
+}
+
+[data-ui] .ui-btn:active {
+  transform: scale(0.97);
+}
+
+[data-ui] .ui-btn-primary {
+  background: var(--ui-accent);
+  border-color: transparent;
+  color: var(--ui-accent-ink);
+}
+
+[data-ui] .ui-btn-ink {
+  background: var(--ui-text);
+  border-color: transparent;
+  color: var(--ui-bg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-ui] .ui-btn:hover {
+    background: var(--ui-hover);
+  }
+  [data-ui] .ui-btn-primary:hover {
+    background: #c8f075;
+  }
+  [data-ui] .ui-btn-ink:hover {
+    background: #333333;
+  }
+}
+
+[data-ui] .ui-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  border: 1px solid var(--ui-line);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ui-text-2);
+}
+
+[data-ui] .ui-chip-accent {
+  background: var(--ui-accent);
+  border-color: transparent;
+  color: var(--ui-accent-ink);
+}
+
+[data-ui] .ui-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+}
+
+[data-ui] .ui-row + .ui-row {
+  border-top: 1px solid var(--ui-line);
+}
+
+[data-ui] .ui-thumb {
+  width: 56px;
+  height: 42px;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid var(--ui-line);
+  object-fit: contain;
+}
+
+[data-ui] .ui-drop {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  text-align: center;
+  padding: 26px 16px;
+  border: 1.5px dashed var(--ui-line);
+  border-radius: var(--ui-radius-s);
+  background: var(--ui-panel);
+  color: var(--ui-text-2);
+}
+
+[data-ui] .ui-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--ui-panel);
+  border: 1px solid var(--ui-line);
+  overflow: hidden;
+}
+
+[data-ui] .ui-progress > span {
+  display: block;
+  height: 100%;
+  background: var(--ui-text);
+  border-radius: inherit;
+  transform-origin: left;
+}
+
+[data-ui] .ui-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-ui] .ui-steps li {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 9px 0;
+}
+
+[data-ui] .ui-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ui-line);
+  display: grid;
+  place-items: center;
+}
+
+[data-ui] .ui-dot[data-state="done"] {
+  background: var(--ui-text);
+  border-color: var(--ui-text);
+  color: var(--ui-bg);
+}
+
+[data-ui] .ui-dot[data-state="now"] {
+  border-color: var(--ui-text);
+}
+
+[data-ui] .ui-dot[data-state="now"]::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--ui-text);
+}
+
+[data-ui] table.ui-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-ui] .ui-table th,
+[data-ui] .ui-table td {
+  text-align: left;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--ui-line);
+  font-size: 13px;
+}
+
+[data-ui] .ui-table th {
+  color: var(--ui-text-2);
+  font-weight: 500;
+}
+
+[data-ui] .ui-table td:last-child,
+[data-ui] .ui-table th:last-child {
+  text-align: right;
+}
+
+[data-ui] .ui-ok {
+  color: var(--ui-ok);
+  font-weight: 500;
+}
+
+[data-ui] .ui-field {
+  display: grid;
+  gap: 6px;
+}
+
+[data-ui] .ui-field label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+[data-ui] .ui-input {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--ui-line);
+  border-radius: var(--ui-radius-s);
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  font: inherit;
+  font-size: 15px;
+}
+
+[data-ui] .ui-input:focus {
+  outline: 2px solid var(--ui-text);
+  outline-offset: 1px;
+}
+
+[data-ui] .ui-kbd {
+  font-variant-numeric: tabular-nums;
+}
