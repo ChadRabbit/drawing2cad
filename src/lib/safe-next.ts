@@ -5,5 +5,7 @@ export function safeNext(next: string | null | undefined, fallback = "/") {
   const base = "https://same.site";
   const url = new URL(next, base);
   if (url.origin !== base) return fallback;
-  return url.pathname + url.search + url.hash;
+  // Normalising can itself produce "//host" (e.g. "/.//evil.com"), so check the result too.
+  const out = url.pathname + url.search + url.hash;
+  return out.startsWith("//") ? fallback : out;
 }
